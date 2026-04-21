@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shubham Jada — Independent App Developer</title>
+<meta name="description" content="Independent iOS app developer. Building focused, privacy-first apps for iPhone."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root {
+  --bg:#03040b;
+  --glass-bg:rgba(255,255,255,0.02);
+  --glass-border:rgba(255,255,255,0.06);
+  --glass-hover:rgba(255,255,255,0.05);
+  --t1:#f8fafc;--t2:#cbd5e1;--t3:#94a3b8;--t4:#64748b;
+  --primary:#818cf8;--primary-glow:rgba(129,140,248,0.2);--accent:#c084fc;
+  --mo:#818cf8;--mo2:#a5b4fc;--mo-bg:rgba(129,140,248,0.1);--mo-b:rgba(129,140,248,0.2);
+  --gr:#34d399;--gr-bg:rgba(52,211,153,0.1);--gr-b:rgba(52,211,153,0.2);
+  --am:#fbbf24;--am-bg:rgba(251,191,36,0.1);--am-b:rgba(251,191,36,0.2);
+  --cy:#22d3ee;--cy-bg:rgba(34,211,238,0.1);--cy-b:rgba(34,211,238,0.2);
+  --re:#f87171;--re-bg:rgba(248,113,113,0.1);--re-b:rgba(248,113,113,0.2);
+  --radius:16px;
+  --mono:'JetBrains Mono',monospace;--heading:'Outfit',sans-serif;--body:'Inter',sans-serif;
+}
+body{background:var(--bg);color:var(--t2);font-family:var(--body);font-weight:300;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;position:relative;}
+
+/* ORBS */
+.orb{position:fixed;border-radius:50%;filter:blur(140px);z-index:0;pointer-events:none;animation:float 20s infinite ease-in-out;opacity:0.6;}
+.orb-1{width:500px;height:500px;background:rgba(129,140,248,0.15);top:-150px;left:-100px;}
+.orb-2{width:600px;height:600px;background:rgba(192,132,252,0.15);bottom:-200px;right:-150px;animation-delay:-5s;animation-duration:25s;}
+.orb-3{width:400px;height:400px;background:rgba(52,211,153,0.08);top:40%;left:20%;animation-delay:-10s;animation-duration:22s;}
+@keyframes float{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-40px) scale(1.05);}}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;z-index:300;height:2px;width:0%;background:linear-gradient(90deg,var(--primary),var(--accent),var(--primary));background-size:200% auto;box-shadow:0 0 10px var(--primary-glow);transition:width 0.1s ease-out;animation:shimmer 2s linear infinite;}
+@keyframes shimmer{to{background-position:200% center;}}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:rgba(3,4,11,0.6);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--glass-border);}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 clamp(20px,4vw,48px);height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;transition:transform 0.2s ease;min-width:0;}
+.nav-brand:hover{transform:scale(1.02);}
+.nav-moon{width:22px;height:22px;flex-shrink:0;filter:drop-shadow(0 0 8px rgba(129,140,248,0.4));}
+.nav-name{font-family:var(--heading);font-size:clamp(13px,2vw,16px);font-weight:600;color:var(--t1);letter-spacing:-0.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.nav-links{display:flex;gap:4px;}
+.nav-link{font-family:var(--mono);font-size:10px;color:var(--t3);letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;padding:6px 10px;border-radius:8px;transition:all 0.2s ease;white-space:nowrap;}
+.nav-link:hover{color:var(--t1);background:var(--glass-hover);}
+.nav-live{width:6px;height:6px;border-radius:50%;background:var(--gr);box-shadow:0 0 8px var(--gr);animation:breathe 3s ease-in-out infinite;flex-shrink:0;}
+@keyframes breathe{0%,100%{opacity:1;transform:scale(1);box-shadow:0 0 8px var(--gr);}50%{opacity:0.4;transform:scale(0.7);box-shadow:0 0 2px var(--gr);}}
+
+/* HERO */
+.hero{position:relative;z-index:1;text-align:center;padding:clamp(72px,10vw,140px) clamp(20px,4vw,48px) clamp(56px,8vw,96px);border-bottom:1px solid var(--glass-border);overflow:hidden;}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at center bottom,var(--glass-bg) 0%,transparent 70%);pointer-events:none;z-index:-1;}
+.hero-in{max-width:900px;margin:0 auto;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;}
+.eyebrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:28px;}
+.pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:6px 14px;border-radius:100px;border:1px solid;backdrop-filter:blur(8px);transition:all 0.3s ease;cursor:default;}
+.pill:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.2);}
+.pill-mo{color:var(--mo);border-color:var(--mo-b);background:var(--mo-bg);}
+.pill-gr{color:var(--gr);border-color:var(--gr-b);background:var(--gr-bg);}
+.pill-dim{color:var(--t3);border-color:var(--glass-border);background:var(--glass-bg);}
+.pdot{width:5px;height:5px;border-radius:50%;background:currentColor;animation:breathe 2.5s ease-in-out infinite;}
+h1{font-family:var(--heading);font-size:clamp(44px,9vw,100px);font-weight:800;line-height:1;letter-spacing:-0.04em;margin-bottom:20px;}
+.h1-a{color:var(--t1);display:inline-block;}
+.h1-b{display:inline-block;background:linear-gradient(135deg,var(--mo2),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 40px rgba(192,132,252,0.3);}
+.hero-desc{max-width:520px;font-size:clamp(14px,2vw,16px);color:var(--t3);line-height:1.8;margin-bottom:40px;}
+
+/* STATS */
+.hero-stats{display:flex;flex-wrap:wrap;justify-content:center;border:1px solid var(--glass-border);border-radius:var(--radius);background:var(--glass-bg);backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,0.2);overflow:hidden;width:100%;}
+.stat{padding:18px clamp(12px,3vw,32px);display:flex;flex-direction:column;align-items:center;gap:4px;border-right:1px solid var(--glass-border);flex:1;min-width:70px;transition:background 0.2s ease;cursor:default;}
+.stat:last-child{border-right:none;}
+.stat:hover{background:var(--glass-hover);}
+.stat-val{font-family:var(--heading);font-size:clamp(16px,3vw,26px);font-weight:700;color:var(--t1);}
+.stat-val span{font-size:11px;color:var(--primary);}
+.stat-key{font-family:var(--mono);font-size:7px;color:var(--t4);letter-spacing:0.09em;text-transform:uppercase;text-align:center;line-height:1.4;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* LAYOUT */
+.wrap{max-width:1100px;margin:0 auto;padding:0 clamp(20px,4vw,48px);}
+.section{padding:clamp(56px,7vw,96px) 0;position:relative;z-index:1;}
+.section+.section{border-top:1px solid var(--glass-border);}
+.sec-label{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;color:var(--t4);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px;}
+.sec-label::before{content:'';width:20px;height:1px;background:var(--glass-border);}
+.sec-title{font-family:var(--heading);font-size:clamp(24px,4vw,44px);font-weight:700;color:var(--t1);letter-spacing:-0.02em;margin-bottom:10px;}
+.sec-sub{font-size:clamp(13px,1.8vw,15px);color:var(--t3);max-width:500px;line-height:1.7;margin-bottom:40px;}
+
+/* APPS */
+.apps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px;}
+.app-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:20px;padding:clamp(18px,3vw,28px);display:flex;flex-direction:column;gap:14px;transition:all 0.3s ease;position:relative;overflow:hidden;}
+.app-card::before{content:'';position:absolute;inset:0;border-radius:20px;background:radial-gradient(circle at top left,var(--card-glow,rgba(129,140,248,0.08)) 0%,transparent 60%);opacity:0;transition:opacity 0.3s ease;pointer-events:none;}
+.app-card:hover{border-color:var(--card-accent,var(--mo-b));transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.3);}
+.app-card:hover::before{opacity:1;}
+.app-top{display:flex;align-items:flex-start;gap:14px;}
+.app-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;border:1px solid var(--glass-border);}
+.app-info{flex:1;min-width:0;}
+.app-name{font-family:var(--heading);font-size:clamp(14px,2vw,17px);font-weight:700;color:var(--t1);letter-spacing:-0.01em;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.app-sub{font-family:var(--heading);font-size:13px;font-weight:400;color:var(--t3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.app-cat{font-family:var(--mono);font-size:9px;color:var(--t4);letter-spacing:0.12em;text-transform:uppercase;margin-top:4px;}
+.app-desc{font-size:13px;color:var(--t3);line-height:1.65;flex:1;}
+.app-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;}
+.app-platform{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:9px;color:var(--t4);letter-spacing:0.1em;text-transform:uppercase;}
+.app-new-badge{font-family:var(--mono);font-size:8px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;border-radius:100px;color:var(--gr);border:1px solid var(--gr-b);background:var(--gr-bg);white-space:nowrap;}
+.app-btn{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:7px 14px;border-radius:100px;text-decoration:none;border:1px solid;transition:all 0.25s ease;white-space:nowrap;flex-shrink:0;}
+.app-btn:hover{transform:scale(1.04);box-shadow:0 4px 16px rgba(0,0,0,0.3);}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:14px;}
+.about-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius);padding:clamp(18px,3vw,26px);transition:background 0.2s ease;}
+.about-card:hover{background:var(--glass-hover);}
+.about-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:17px;background:var(--glass-bg);border:1px solid var(--glass-border);}
+.about-title{font-family:var(--heading);font-size:14px;font-weight:600;color:var(--t1);margin-bottom:7px;}
+.about-body{font-size:12.5px;color:var(--t3);line-height:1.7;}
+
+/* LEGAL LINK CARDS — overflow fix */
+.links-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:14px;}
+.link-card{display:flex;align-items:center;gap:14px;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius);padding:18px 20px;text-decoration:none;min-width:0;overflow:hidden;transition:all 0.25s ease;}
+.link-card:hover{background:var(--glass-hover);border-color:var(--mo-b);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2);}
+.link-icon{width:40px;height:40px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--mo-bg);border:1px solid var(--mo-b);}
+.link-text{flex:1;min-width:0;overflow:hidden;}
+.link-title{font-family:var(--heading);font-size:14px;font-weight:600;color:var(--t1);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.link-url{font-family:var(--mono);font-size:9px;color:var(--t4);letter-spacing:0.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;max-width:100%;}
+.link-arr{flex-shrink:0;margin-left:8px;color:var(--t4);transition:transform 0.2s ease,color 0.2s ease;}
+.link-card:hover .link-arr{transform:translate(3px,-3px);color:var(--mo);}
+
+/* CONTACT */
+.contact-box{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:20px;padding:clamp(22px,4vw,36px);max-width:560px;width:100%;}
+.contact-hd{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
+.contact-moon{width:46px;height:46px;border-radius:12px;background:var(--mo-bg);border:1px solid var(--mo-b);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.contact-name{font-family:var(--heading);font-size:16px;font-weight:700;color:var(--t1);}
+.contact-role{font-family:var(--mono);font-size:9px;color:var(--t4);letter-spacing:0.1em;text-transform:uppercase;margin-top:3px;}
+.crow{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--glass-border);min-width:0;}
+.crow-ico{width:30px;height:30px;border-radius:8px;background:var(--glass-bg);border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.crow-lbl{font-family:var(--mono);font-size:9px;color:var(--t4);letter-spacing:0.1em;text-transform:uppercase;width:50px;flex-shrink:0;}
+.crow-val{font-size:13px;color:var(--t2);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.crow-val a{color:var(--mo);text-decoration:none;transition:color 0.2s;}
+.crow-val a:hover{color:var(--mo2);}
+
+/* FOOTER */
+footer{position:relative;z-index:1;border-top:1px solid var(--glass-border);padding:26px clamp(20px,4vw,48px);}
+.foot-in{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;}
+.foot-left{display:flex;align-items:center;gap:10px;flex-wrap:wrap;min-width:0;}
+.foot-moon{width:18px;height:18px;flex-shrink:0;filter:drop-shadow(0 0 6px rgba(129,140,248,0.4));}
+.foot-name{font-family:var(--heading);font-size:13px;font-weight:600;color:var(--t3);}
+.foot-sep{width:1px;height:14px;background:var(--glass-border);flex-shrink:0;}
+.foot-email{font-size:11px;color:var(--t4);font-weight:400;}
+.foot-copy{font-size:11px;color:var(--t4);line-height:1.6;text-align:right;}
+
+/* ══ RESPONSIVE BREAKPOINTS ══ */
+@media(max-width:768px){
+  .nav-links{display:none;}
+}
+@media(max-width:520px){
+  .eyebrow .pill:last-child{display:none;}
+  .foot-copy{text-align:left;width:100%;}
+}
+@media(max-width:380px){
+  h1{font-size:38px;}
+  .stat-key{font-size:6px;}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a href="#" class="nav-brand">
+      <svg class="nav-moon" viewBox="0 0 24 24" fill="none">
+        <path d="M19 12.5A7 7 0 0 1 12 19.5a7 7 0 0 1 0-14 5.3 5.3 0 0 0 7 7z" fill="#a5b4fc" opacity=".9"/>
+        <circle cx="17" cy="6" r="1.5" fill="#c084fc" opacity=".8"/>
+        <circle cx="19" cy="10" r="1" fill="#818cf8" opacity=".6"/>
+      </svg>
+      <span class="nav-name">Shubham Jada</span>
+    </a>
+    <div class="nav-right">
+      <nav class="nav-links">
+        <a href="#apps" class="nav-link">Apps</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-live"></div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-in">
+    <div class="eyebrow">
+      <span class="pill pill-mo"><span class="pdot"></span>iOS Developer</span>
+      <span class="pill pill-gr"><span class="pdot"></span>Privacy First</span>
+      <span class="pill pill-dim">Independent Studio</span>
+    </div>
+    <h1><span class="h1-a">Apps built</span><br><span class="h1-b">with purpose.</span></h1>
+    <p class="hero-desc">Independent iOS app developer focused on building clean, focused, privacy-respecting tools that people actually want to use every day.</p>
+    <div class="hero-stats" id="stat-block"></div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <!-- APPS -->
+  <section class="section reveal" id="apps">
+    <div class="sec-label">Portfolio</div>
+    <h2 class="sec-title">Apps on the App Store</h2>
+    <p class="sec-sub">Each app is designed around a single clear problem — no bloat, no unnecessary tracking.</p>
+    <div class="apps-grid" id="apps-grid"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section reveal" id="about">
+    <div class="sec-label">About</div>
+    <h2 class="sec-title">The philosophy</h2>
+    <p class="sec-sub">A small independent studio that believes good software should be quiet, capable, and respectful of the person using it.</p>
+    <div class="about-grid">
+      <div class="about-card"><div class="about-icon">🔒</div><div class="about-title">Privacy by default</div><div class="about-body">No unnecessary data collection. No selling data to third parties. Every app is built with privacy as a first-class feature, not an afterthought.</div></div>
+      <div class="about-card"><div class="about-icon">🎯</div><div class="about-title">Focused products</div><div class="about-body">Each app solves one problem and solves it well. No feature bloat, no dark patterns, no subscription traps for features that should be free.</div></div>
+      <div class="about-card"><div class="about-icon">📱</div><div class="about-title">Native iOS only</div><div class="about-body">All apps are built natively for Apple platforms — designed for iPhone first, taking full advantage of Apple's privacy and performance ecosystem.</div></div>
+      <div class="about-card"><div class="about-icon">🛠️</div><div class="about-title">Actively maintained</div><div class="about-body">Every app listed here is actively maintained and updated. If something breaks or changes in iOS, it gets fixed. Support requests are handled personally.</div></div>
+    </div>
+  </section>
+
+  <!-- LEGAL -->
+  <section class="section reveal" id="legal">
+    <div class="sec-label">Legal</div>
+    <h2 class="sec-title">Policies</h2>
+    <p class="sec-sub">All apps published under this developer account are covered by the following policies.</p>
+    <div class="links-row">
+      <a href="https://shubhamjada.github.io/privacy/privacy-policy.html" class="link-card">
+        <div class="link-icon">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 2L3 5v5c0 4.4 3 8.1 7 9 4-.9 7-4.6 7-9V5l-7-3z" stroke="#818cf8" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="link-text">
+          <div class="link-title">Privacy Policy</div>
+          <span class="link-url">shubhamjada.github.io/privacy/privacy-policy.html</span>
+        </div>
+        <svg class="link-arr" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H7M13 3v6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="https://shubhamjada.github.io/privacy/support.html" class="link-card">
+        <div class="link-icon">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.5" stroke="#818cf8" stroke-width="1.4"/><path d="M10 10.5v-1a2 2 0 1 0-2-2" stroke="#818cf8" stroke-width="1.4" stroke-linecap="round"/><circle cx="10" cy="13" r=".8" fill="#818cf8"/></svg>
+        </div>
+        <div class="link-text">
+          <div class="link-title">Support</div>
+          <span class="link-url">shubhamjada.github.io/privacy/support.html</span>
+        </div>
+        <svg class="link-arr" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H7M13 3v6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section reveal" id="contact">
+    <div class="sec-label">Contact</div>
+    <h2 class="sec-title">Get in touch</h2>
+    <p class="sec-sub">For support, privacy requests, or general questions — aim to respond within 30 business days.</p>
+    <div class="contact-box">
+      <div class="contact-hd">
+        <div class="contact-moon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M19 12.5A7 7 0 0 1 12 19.5a7 7 0 0 1 0-14 5.3 5.3 0 0 0 7 7z" fill="#a5b4fc" opacity=".9"/><circle cx="17" cy="6" r="1.5" fill="#c084fc" opacity=".8"/></svg>
+        </div>
+        <div>
+          <div class="contact-name">Shubham Jada</div>
+          <div class="contact-role">Independent App Developer</div>
+        </div>
+      </div>
+      <div class="crow">
+        <div class="crow-ico"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="#818cf8" stroke-width="1.2"/><path d="M1.5 5.5l6.5 4 6.5-4" stroke="#818cf8" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <span class="crow-lbl">Email</span>
+        <span class="crow-val"><a href="mailto:moonarkh.dev@gmail.com">moonarkh.dev@gmail.com</a></span>
+      </div>
+      <div class="crow">
+        <div class="crow-ico"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C4.96 1.5 2.5 3.96 2.5 7c0 2.23 1.3 4.16 3.2 5.1L8 14.5l2.3-2.4C12.2 11.16 13.5 9.23 13.5 7c0-3.04-2.46-5.5-5.5-5.5z" stroke="#818cf8" stroke-width="1.2" stroke-linejoin="round"/><circle cx="8" cy="7" r="1.5" fill="#818cf8"/></svg></div>
+        <span class="crow-lbl">Platform</span>
+        <span class="crow-val">Apple App Store</span>
+      </div>
+      <div class="crow">
+        <div class="crow-ico"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="#818cf8" stroke-width="1.2"/><path d="M8 5v3.5l2 1.5" stroke="#818cf8" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <span class="crow-lbl">Response</span>
+        <span class="crow-val">Within 30 business days</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-left">
+      <svg class="foot-moon" viewBox="0 0 14 14" fill="none"><path d="M11.5 7.5A4.5 4.5 0 0 1 7 12a4.5 4.5 0 0 1 0-9 3.4 3.4 0 0 0 4.5 4.5z" fill="#a5b4fc"/></svg>
+      <span class="foot-name">Shubham Jada</span>
+      <div class="foot-sep"></div>
+      <span class="foot-email">moonarkh.dev@gmail.com</span>
+    </div>
+    <div class="foot-copy">© 2026 Shubham Jada · Independent App Developer<br>All apps published under this account.</div>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════
+   APPS DATA — Edit this array to add or remove apps.
+   To add a new app, copy one object and fill in the details.
+   color: "mo" (indigo) | "am" (amber) | "cy" (cyan) | "gr" (green) | "re" (red)
+   isNew: true  →  shows a "New" badge on the card
+   ═══════════════════════════════════════════════════════════════════ */
+const APPS = [
+  {
+    name: "Lux Music",
+    subtitle: "Offline Player",
+    emoji: "🎵",
+    color: "am",
+    category: "Music & Audio",
+    description: "A clean offline music player for iPhone. Play your local library beautifully, without streaming, subscriptions, or internet required.",
+    platform: "iOS",
+    url: "https://apps.apple.com/us/app/lux-music-offline-player/id6761934662",
+    isNew: false
+  },
+  {
+    name: "HydroBuddy",
+    subtitle: "AI Water Tracker",
+    emoji: "💧",
+    color: "cy",
+    category: "Health & Fitness",
+    description: "Smart hydration tracking powered by AI. Get personalized daily water goals, reminders, and insights to stay consistently hydrated.",
+    platform: "iOS",
+    url: "https://apps.apple.com/us/app/hydrobuddy-ai-water-tracker/id6761210383",
+    isNew: false
+  },
+  {
+    name: "Focus Friend",
+    subtitle: "ADHD Planner",
+    emoji: "🎯",
+    color: "gr",
+    category: "Productivity",
+    description: "A planner built specifically for ADHD brains. Break tasks into manageable steps, reduce overwhelm, and build focus habits that actually stick.",
+    platform: "iOS",
+    url: "https://apps.apple.com/us/app/focus-friend-adhd-planner/id6761078470",
+    isNew: false
+  }
+  /* ← Paste a new app object here when you publish a new app */
+];
+
+/* Color tokens */
+const C = {
+  mo:{bg:'rgba(129,140,248,0.1)',b:'rgba(129,140,248,0.2)',t:'#818cf8',g:'rgba(129,140,248,0.08)'},
+  am:{bg:'rgba(251,191,36,0.1)', b:'rgba(251,191,36,0.2)', t:'#fbbf24',g:'rgba(251,191,36,0.08)'},
+  cy:{bg:'rgba(34,211,238,0.1)', b:'rgba(34,211,238,0.2)', t:'#22d3ee',g:'rgba(34,211,238,0.08)'},
+  gr:{bg:'rgba(52,211,153,0.1)', b:'rgba(52,211,153,0.2)', t:'#34d399',g:'rgba(52,211,153,0.08)'},
+  re:{bg:'rgba(248,113,113,0.1)',b:'rgba(248,113,113,0.2)',t:'#f87171',g:'rgba(248,113,113,0.08)'},
+};
+
+function renderApps() {
+  document.getElementById('apps-grid').innerHTML = APPS.map(app => {
+    const c = C[app.color] || C.mo;
+    return `
+    <div class="app-card" style="--card-accent:${c.b};--card-glow:${c.g};">
+      <div class="app-top">
+        <div class="app-icon" style="background:${c.bg};border-color:${c.b};">${app.emoji}</div>
+        <div class="app-info">
+          <div class="app-name">${app.name}</div>
+          <div class="app-sub">${app.subtitle}</div>
+          <div class="app-cat">${app.category}</div>
+        </div>
+      </div>
+      <div class="app-desc">${app.description}</div>
+      <div class="app-footer">
+        <div class="app-platform">
+          <svg width="9" height="11" viewBox="0 0 12 15" fill="none"><path d="M9 0C7.8 0 6.8.8 6.2 1.5 5.6.8 4.6 0 3.4 0 1.5 0 0 1.7 0 3.8c0 3.2 3.8 7.4 5.7 9.2.3.3.5.5.5.5s.2-.2.5-.5C8.6 11.2 12.4 7 12.4 3.8 12.4 1.7 10.9 0 9 0z" fill="currentColor" opacity=".4"/></svg>
+          ${app.platform}
+          ${app.isNew ? '<span class="app-new-badge">New</span>' : ''}
+        </div>
+        <a href="${app.url}" target="_blank" rel="noopener" class="app-btn" style="color:${c.t};border-color:${c.b};background:${c.bg};">
+          App Store <svg width="9" height="9" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderStats() {
+  const s = [
+    {val:APPS.length,u:'',k:'Apps Published'},
+    {val:'iOS',u:'',k:'Platform'},
+    {val:'2026',u:'',k:'Active Since'},
+    {val:'30',u:'d',k:'Privacy Response'},
+  ];
+  document.getElementById('stat-block').innerHTML = s.map(x =>
+    `<div class="stat"><div class="stat-val">${x.val}<span>${x.u}</span></div><div class="stat-key">${x.k}</div></div>`
+  ).join('');
+}
+
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  document.getElementById('prog').style.width=(window.scrollY/(h.scrollHeight-h.clientHeight)*100)+'%';
+},{passive:true});
+
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+
+document.body.classList.add('ready');
+renderApps();
+renderStats();
+document.querySelectorAll('.reveal').forEach((el,i)=>{
+  el.style.transitionDelay=(i*0.05)+'s';
+  ro.observe(el);
+});
+</script>
+</body>
+</html>
